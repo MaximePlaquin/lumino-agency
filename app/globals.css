@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Nouvelle palette de couleurs */
+    --background: 210 20% 98%; /* #F9FAFB - Fond clair */
+    --foreground: 215 28% 17%; /* #1F2937 - Texte dark mode */
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 28% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 17%;
+
+    --primary: 220 65% 33%; /* #1E3A8A - Bleu foncé corporate */
+    --primary-foreground: 210 20% 98%;
+
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 215 28% 17%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 35 92% 50%; /* #F59E0B - Orange doré CTA */
+    --accent-foreground: 215 28% 17%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 220 65% 33%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 215 28% 17%; /* #1F2937 - Texte dark mode (utilisé comme fond) */
+    --foreground: 210 20% 98%; /* #F9FAFB - Fond clair (utilisé comme texte) */
+
+    --card: 215 28% 12%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 215 28% 12%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 220 65% 45%; /* #1E3A8A plus clair pour le dark mode */
+    --primary-foreground: 210 20% 98%;
+
+    --secondary: 215 28% 23%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 215 28% 23%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 35 92% 50%; /* #F59E0B - Orange doré CTA */
+    --accent-foreground: 215 28% 12%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 215 28% 25%;
+    --input: 215 28% 25%;
+    --ring: 220 65% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .animated-underline {
+    position: relative;
+  }
+
+  .animated-underline::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: hsl(var(--accent));
+    transition: width 0.3s ease;
+  }
+
+  .animated-underline:hover::after {
+    width: 100%;
+  }
+}
