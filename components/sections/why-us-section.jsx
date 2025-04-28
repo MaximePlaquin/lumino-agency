@@ -60,7 +60,7 @@ export function WhyUsSection({ content }) {
                 <div key={value.id} className="flex gap-4">
                   <div className="flex-shrink-0">
                     <div className="bg-primary/10 p-3 rounded-full">
-                      <value.icon className="h-6 w-6 text-primary" />
+                      {/* <value.icon className="h-6 w-6 text-primary" /> */}
                     </div>
                   </div>
                   <div>

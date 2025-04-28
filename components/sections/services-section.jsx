@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { Globe, Palette, Zap, BarChart3, Wrench } from "lucide-react"
+
 
 /**
  * Section Services du site avec design moderne de cartes
@@ -9,6 +11,13 @@ import Link from "next/link"
  * @param {Object} props.services - Les données des services
  */
 export function ServicesSection({ services }) {
+
+  const icons = {
+    1: Globe,
+    2: Palette,
+  }
+
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -68,7 +77,7 @@ export function ServicesSection({ services }) {
               className={`rounded-2xl p-8 h-full flex flex-col ${service.bgClass}`}
             >
               <div className={`w-12 h-12 rounded-full flex items-center justify-center ${service.iconBgClass} mb-6`}>
-                <service.icon className={`h-6 w-6 ${service.iconColorClass}`} />
+                {/* <service.icon className={`h-6 w-6 ${service.iconColorClass}`} /> */}
               </div>
 
               <h3 className="text-2xl font-bold mb-6">{service.title}</h3>

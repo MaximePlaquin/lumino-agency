@@ -66,7 +66,7 @@ export function AboutSection({ content }) {
                 }}
               >
                 <div className="w-16 h-16 mb-6 flex items-center justify-center">
-                  <value.icon className="w-10 h-10 text-white" strokeWidth={1.5} />
+                  {/* <value.icon className="w-10 h-10 text-white" strokeWidth={1.5} /> */}
                 </div>
               </div>
 
