@@ -15,7 +15,11 @@ export function ServicesSection({ services }) {
   const icons = {
     1: Globe,
     2: Palette,
+    3: Zap,
+    4: BarChart3,
+    5: Wrench,
   }
+
 
 
   const containerVariants = {
@@ -70,7 +74,9 @@ export function ServicesSection({ services }) {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {services.items.map((service) => (
+          {services.items.map((service) => {
+            const Icon = icons[service.id]
+            return (
             <motion.div
               key={service.id}
               variants={itemVariants}
@@ -78,6 +84,7 @@ export function ServicesSection({ services }) {
             >
               <div className={`w-12 h-12 rounded-full flex items-center justify-center ${service.iconBgClass} mb-6`}>
                 {/* <service.icon className={`h-6 w-6 ${service.iconColorClass}`} /> */}
+                {Icon && <Icon className={`h-6 w-6 ${service.iconColorClass}`} />}
               </div>
 
               <h3 className="text-2xl font-bold mb-6">{service.title}</h3>
@@ -110,7 +117,8 @@ export function ServicesSection({ services }) {
                 </Link>
               </div>
             </motion.div>
-          ))}
+            )
+            })}
         </motion.div>
       </div>
     </section>
