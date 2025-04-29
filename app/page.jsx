@@ -7,12 +7,13 @@ import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { ContactSection } from "@/components/sections/contact-section"
 import { BookingSection } from "@/components/sections/booking-section"
 import { getHeroContent } from "@/lib/data/hero"
-import { getServices } from "@/lib/data/services"
 import { getAboutContent } from "@/lib/data/about"
 import { getWhyUsContent } from "@/lib/data/whyus"
 import { getPortfolioProjects } from "@/lib/data/portfolio"
 import { getTestimonials } from "@/lib/data/testimonials"
 import { getContactInfo } from "@/lib/data/contact"
+// import { getServicesContent } from "@/lib/data/services"
+import { getServices } from "@/lib/data/services"
 
 /**
  * Page d'accueil du site Scalenity

@@ -4,23 +4,20 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { Globe, Palette, Zap, BarChart3, Wrench } from "lucide-react"
 
-
 /**
  * Section Services du site avec design moderne de cartes
  * @param {Object} props - Les propriétés du composant
  * @param {Object} props.services - Les données des services
  */
 export function ServicesSection({ services }) {
-
+  
   const icons = {
-    1: Globe,
-    2: Palette,
-    3: Zap,
-    4: BarChart3,
-    5: Wrench,
-  }
-
-
+    globe: Globe,
+    palette: Palette,
+    zap: Zap,
+    barchart: BarChart3,
+    wrench: Wrench,
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -75,50 +72,60 @@ export function ServicesSection({ services }) {
           viewport={{ once: true }}
         >
           {services.items.map((service) => {
-            const Icon = icons[service.id]
+            const Icon = icons[service.iconId]
+
             return (
-            <motion.div
-              key={service.id}
-              variants={itemVariants}
-              className={`rounded-2xl p-8 h-full flex flex-col ${service.bgClass}`}
-            >
-              <div className={`w-12 h-12 rounded-full flex items-center justify-center ${service.iconBgClass} mb-6`}>
-                {/* <service.icon className={`h-6 w-6 ${service.iconColorClass}`} /> */}
-                {Icon && <Icon className={`h-6 w-6 ${service.iconColorClass}`} />}
-              </div>
-
-              <h3 className="text-2xl font-bold mb-6">{service.title}</h3>
-
-              <p className="text-muted-foreground mb-8">{service.description}</p>
-
-              <div className="mt-auto">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {service.features.map((feature) => (
-                    <span key={feature.id} className="px-3 py-1 bg-background/80 text-sm rounded-full">
-                      {feature.text}
-                    </span>
-                  ))}
+              <motion.div
+                key={service.id}
+                variants={itemVariants}
+                className={`rounded-2xl p-8 h-full flex flex-col ${service.bgClass}`}
+              >
+                <div
+                  className={`w-12 h-12 rounded-full flex items-center justify-center ${service.iconBgClass} mb-6`}
+                >
+                  {Icon && <Icon className={`h-6 w-6 ${service.iconColorClass}`} />}
                 </div>
 
-                <Link
-                  href={service.buttonUrl}
-                  className="text-primary font-medium hover:underline inline-flex items-center"
-                >
-                  {service.buttonText}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 ml-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                <h3 className="text-2xl font-bold mb-6">{service.title}</h3>
+
+                <p className="text-muted-foreground mb-8">{service.description}</p>
+
+                <div className="mt-auto">
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {service.features.map((feature, index) => (
+                      <span
+                        key={index}
+                        className="px-3 py-1 bg-background/80 text-sm rounded-full"
+                      >
+                        {feature.text}
+                      </span>
+                    ))}
+                  </div>
+
+                  <Link
+                    href={service.buttonUrl}
+                    className="text-primary font-medium hover:underline inline-flex items-center"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
-            </motion.div>
+                    {service.buttonText}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4 ml-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </Link>
+                </div>
+              </motion.div>
             )
-            })}
+          })}
         </motion.div>
       </div>
     </section>
