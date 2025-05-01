@@ -22,9 +22,9 @@ export function BookingSection() {
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/30 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto bg-gradient-to-br from-blue-600 via-purple-600 to-violet-500 rounded-3xl overflow-hidden shadow-xl">
+        <div className="w-full bg-gradient-to-br from-blue-600 via-purple-600 to-violet-500 rounded-3xl overflow-hidden shadow-xl">
           <div className="p-8 md:p-12 flex flex-col md:flex-row items-center">
-            <div className="md:w-2/3 mb-8 md:mb-0 md:pr-8">
+            <div className="md:w-2/3 mb-8 md:mb-0 md:pr-4">
               <motion.h2
                 className="text-4xl md:text-5xl font-bold text-white mb-4"
                 initial={{ opacity: 0, y: 20 }}

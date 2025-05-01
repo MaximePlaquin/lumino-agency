@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { Users, Zap, ShoppingBag, Award } from "lucide-react"
+
 
 /**
  * Section "Pourquoi nous choisir" du site
@@ -9,6 +11,12 @@ import Image from "next/image"
  * @param {Object} props.content - Le contenu de la section
  */
 export function WhyUsSection({ content }) {
+  const icons = {
+    users: Users,
+    shoppingbag: ShoppingBag,
+    zap: Zap,
+    award: Award,
+  };
   return (
     <section id="why-us" className="py-20">
       <div className="container mx-auto px-4">
@@ -56,11 +64,14 @@ export function WhyUsSection({ content }) {
             transition={{ duration: 0.5 }}
           >
             <div className="space-y-8">
-              {content.values.map((value) => (
+              {content.values.map((value) => {
+                const Icon = icons[value.iconId]
+                return(
                 <div key={value.id} className="flex gap-4">
                   <div className="flex-shrink-0">
                     <div className="bg-primary/10 p-3 rounded-full">
                       {/* <value.icon className="h-6 w-6 text-primary" /> */}
+                      {Icon && <Icon className={`h-6 w-6 ${value.iconColorClass}`} />}
                     </div>
                   </div>
                   <div>
@@ -68,7 +79,8 @@ export function WhyUsSection({ content }) {
                     <p className="text-muted-foreground">{value.description}</p>
                   </div>
                 </div>
-              ))}
+                )
+              })}
             </div>
           </motion.div>
         </div>

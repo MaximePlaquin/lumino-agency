@@ -36,8 +36,8 @@ export default async function Home() {
       <ServicesSection services={services} />
       <AboutSection content={aboutContent} />
       <WhyUsSection content={whyUsContent} />
-      <PortfolioSection projects={portfolioProjects} />
-      <TestimonialsSection testimonials={testimonials} />
+      {/* <PortfolioSection projects={portfolioProjects} /> */}
+      {/* <TestimonialsSection testimonials={testimonials} /> */}
       <BookingSection />
       <ContactSection contactInfo={contactInfo} />
     </main>

@@ -37,7 +37,7 @@ export function Header() {
     >
       <div className="container mx-auto px-4 py-5 flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-          <span className="font-bold text-2xl">Scalenity</span>
+          <span className="font-bold text-2xl">Lumino Agency</span>
         </Link>
 
         {/* Navigation Desktop */}
