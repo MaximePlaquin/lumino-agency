@@ -1,6 +1,7 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { Globe, Palette, Zap, BarChart3, Wrench } from "lucide-react";
 
 /**
  * Section "Qui sommes-nous" du site avec design moderne
@@ -8,6 +9,14 @@ import { motion } from "framer-motion"
  * @param {Object} props.content - Le contenu de la section
  */
 export function AboutSection({ content }) {
+  const icons = {
+    globe: Globe,
+    palette: Palette,
+    zap: Zap,
+    barchart: BarChart3,
+    wrench: Wrench,
+  };
+
   return (
     <section id="about" className="py-24 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -33,7 +42,11 @@ export function AboutSection({ content }) {
             <span>C'est </span>
             <span className="relative">
               "l'expertise digitale
-              <span className="font-normal italic text-primary"> qui fait la différence</span>"
+              <span className="font-normal italic text-primary">
+                {" "}
+                qui fait la différence
+              </span>
+              "
             </span>
           </motion.h2>
 
@@ -50,32 +63,36 @@ export function AboutSection({ content }) {
 
         {/* Cartes avec dégradés */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {content.values.map((value, index) => (
-            <motion.div
-              key={value.id}
-              className="rounded-3xl overflow-hidden"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
-            >
-              <div
-                className="aspect-square relative flex flex-col items-center justify-center p-8 text-center"
-                style={{
-                  background: value.gradient,
-                }}
+          {content.values.map((value, index) => {
+            return (
+              <motion.div
+                key={value.id}
+                className="rounded-3xl overflow-hidden"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 * index }}
               >
-                <div className="w-16 h-16 mb-6 flex items-center justify-center">
-                  {/* <value.icon className="w-10 h-10 text-white" strokeWidth={1.5} /> */}
+                <div
+                  className="aspect-square relative overflow-hidden rounded-3xl"
+                  style={{
+                    background: value.gradient,
+                  }}
+                >
+                  <img
+                    src={value.image}
+                    alt={value.title}
+                    className="w-full h-full object-contain p-8"
+                  />
                 </div>
-              </div>
 
-              <div className="bg-card p-8">
-                <h3 className="text-2xl font-bold mb-2">{value.title}</h3>
-                <p className="text-muted-foreground">{value.description}</p>
-              </div>
-            </motion.div>
-          ))}
+                <div className="bg-card p-8">
+                  <h3 className="text-2xl font-bold mb-2">{value.title}</h3>
+                  <p className="text-muted-foreground">{value.description}</p>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Statistiques */}
@@ -139,12 +156,19 @@ export function AboutSection({ content }) {
                         filter: "grayscale(100%)",
                       }}
                     />
-                    <div className={`absolute inset-0 opacity-30`} style={{ background: member.gradient }}></div>
+                    <div
+                      className={`absolute inset-0 opacity-30`}
+                      style={{ background: member.gradient }}
+                    ></div>
                   </div>
                   <div className="p-6">
                     <h4 className="text-xl font-bold">{member.name}</h4>
-                    <p className="text-primary font-medium mb-2">{member.role}</p>
-                    <p className="text-sm text-muted-foreground">{member.bio}</p>
+                    <p className="text-primary font-medium mb-2">
+                      {member.role}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {member.bio}
+                    </p>
                   </div>
                 </motion.div>
               ))}
@@ -153,5 +177,5 @@ export function AboutSection({ content }) {
         )}
       </div>
     </section>
-  )
+  );
 }
