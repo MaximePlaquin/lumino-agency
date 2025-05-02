@@ -32,27 +32,27 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/80 backdrop-blur-md shadow-md" : "bg-transparent"
+        scrolled ? "bg-black/35 backdrop-blur-md shadow-md" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 py-5 flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-          <span className="font-bold text-2xl">Lumino Agency</span>
+          <span className="font-bold text-2xl text-white">Lumino Agency</span>
         </Link>
 
         {/* Navigation Desktop */}
-        <nav className="hidden md:flex items-center space-x-6">
+        <nav className="hidden md:flex items-center space-x-6 text-white">
           {navItems.map((item) => (
             <Link key={item.id} href={item.href} className="text-sm font-medium hover:text-primary transition-colors">
               {item.label}
             </Link>
           ))}
 
-          <Button className="bg-black hover:bg-black/90 text-white rounded-full px-6" asChild>
+          {/* <Button className="bg-black hover:bg-black/90 text-white rounded-full px-6" asChild>
             <Link href="#start">Commencer aujourd'hui</Link>
-          </Button>
+          </Button> */}
 
-          <Button variant="outline" className="border-2 rounded-full flex items-center gap-2" asChild>
+          <Button variant="outline" className="bg-black border-2 rounded-full flex items-center gap-2" asChild>
             <Link href="#booking">
               <Calendar className="h-4 w-4" />
               <span>Réserver un appel</span>
@@ -64,9 +64,9 @@ export function Header() {
 
         {/* Bouton Menu Mobile */}
         <div className="flex items-center space-x-4 md:hidden">
-          <Button className="bg-black hover:bg-black/90 text-white rounded-full px-4 text-xs py-1 h-8" asChild>
+          {/* <Button className="bg-black hover:bg-black/90 text-white rounded-full px-4 text-xs py-1 h-8" asChild>
             <Link href="#start">Commencer aujourd'hui</Link>
-          </Button>
+          </Button> */}
           <ThemeToggle />
           <Button variant="ghost" size="icon" onClick={() => setIsOpen(true)}>
             <Menu className="h-6 w-6" />
