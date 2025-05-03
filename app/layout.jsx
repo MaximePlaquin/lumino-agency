@@ -39,7 +39,7 @@ export function generateMetadata() {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={`${inter.className} overflow-x-hidden`}>
+      <body className={`${inter.className} overflow-x-hidden scroll-smooth`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <Header />
           <Suspense fallback={<div>Chargement...</div>}>{children}</Suspense>

@@ -29,6 +29,15 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // bloque le scroll sur mobile lorsque le menu est ouvert
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("overflow-hidden")
+    } else {
+      document.body.classList.remove("overflow-hidden")
+    }
+  }, [isOpen])
+
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -68,7 +77,7 @@ export function Header() {
             <Link href="#start">Commencer aujourd'hui</Link>
           </Button> */}
           <ThemeToggle />
-          <Button variant="ghost" size="icon" onClick={() => setIsOpen(true)}>
+          <Button variant="ghost" className="text-white" size="icon" onClick={() => setIsOpen(true)}>
             <Menu className="h-6 w-6" />
           </Button>
         </div>
