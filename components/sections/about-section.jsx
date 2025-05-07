@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Globe, Palette, Zap, BarChart3, Wrench } from "lucide-react";
+import { Sparkles, Code, Brush, Headphones, BarChart3, Users } from "lucide-react";
 
 /**
  * Section "Qui sommes-nous" du site avec design moderne
@@ -9,13 +9,26 @@ import { Globe, Palette, Zap, BarChart3, Wrench } from "lucide-react";
  * @param {Object} props.content - Le contenu de la section
  */
 export function AboutSection({ content }) {
-  const icons = {
-    globe: Globe,
-    palette: Palette,
-    zap: Zap,
-    barchart: BarChart3,
-    wrench: Wrench,
-  };
+  const features = [
+    {
+      icon: <Code className="w-8 h-8 text-purple-400" />,
+    },
+    {
+      icon: <Brush className="w-8 h-8 text-purple-400" />,
+    },
+    {
+      icon: <Sparkles className="w-8 h-8 text-purple-400" />,
+    },
+    {
+      icon: <Headphones className="w-6 h-6 text-purple-400 mb-2" />,
+    },
+    {
+      icon: <BarChart3 className="w-6 h-6 text-purple-400 mb-2" />,
+    },
+    {
+      icon: <Users className="w-6 h-6 text-purple-400 mb-2" />,
+    },
+  ];
 
   return (
     <section id="about" className="py-24 bg-muted/30">
@@ -62,7 +75,24 @@ export function AboutSection({ content }) {
         </div>
 
         {/* Cartes avec dégradés */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="w-full py-4 px-4">
+        <div className="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {content.values.map((value, index) => (
+            <div
+              key={value.id}
+              className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-800 to-slate-900 p-6 shadow-xl transition hover:ring-2 hover:ring-purple-500/50"
+            >
+              <div className="absolute -inset-20 bg-purple-50 dark:bg-purple-950/30 blur-2xl" />
+              <div className="relative z-10">
+                {features[index]?.icon}
+                <h3 className="mt-4 text-xl font-bold text-black">{value.title}</h3>
+                <p className="mt-2 text-sm text-gray-400">{value.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+    </div>
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {content.values.map((value, index) => {
             return (
               <motion.div
@@ -93,7 +123,7 @@ export function AboutSection({ content }) {
               </motion.div>
             );
           })}
-        </div>
+        </div> */}
 
         {/* Statistiques */}
         <div className="mt-32">
