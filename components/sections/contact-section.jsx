@@ -76,7 +76,7 @@ export function ContactSection({ contactInfo }) {
   }
 
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" className="py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
           <motion.p
@@ -119,7 +119,9 @@ export function ContactSection({ contactInfo }) {
             transition={{ duration: 0.5 }}
           >
             <h3 className="text-3xl font-bold mb-8">{contactInfo.infoTitle}</h3>
-            <p className="text-gray-500 dark:text-gray-400 mb-12 text-lg">{contactInfo.infoDescription}</p>
+            <p className="text-gray-500 dark:text-gray-400 mb-12 text-lg">
+              {contactInfo.infoDescription}
+            </p>
 
             <div className="space-y-8">
               <div className="flex items-start">
@@ -127,8 +129,12 @@ export function ContactSection({ contactInfo }) {
                   <Mail className="h-6 w-6" />
                 </div>
                 <div>
-                  <h4 className="font-medium text-lg mb-1">{contactInfo.emailLabel}</h4>
-                  <p className="text-gray-500 dark:text-gray-400">{contactInfo.email}</p>
+                  <h4 className="font-medium text-lg mb-1">
+                    {contactInfo.emailLabel}
+                  </h4>
+                  <p className="text-gray-500 dark:text-gray-400">
+                    {contactInfo.email}
+                  </p>
                 </div>
               </div>
 
@@ -137,8 +143,12 @@ export function ContactSection({ contactInfo }) {
                   <Phone className="h-6 w-6" />
                 </div>
                 <div>
-                  <h4 className="font-medium text-lg mb-1">{contactInfo.phoneLabel}</h4>
-                  <p className="text-gray-500 dark:text-gray-400">{contactInfo.phone}</p>
+                  <h4 className="font-medium text-lg mb-1">
+                    {contactInfo.phoneLabel}
+                  </h4>
+                  <p className="text-gray-500 dark:text-gray-400">
+                    {contactInfo.phone}
+                  </p>
                 </div>
               </div>
 
@@ -147,8 +157,12 @@ export function ContactSection({ contactInfo }) {
                   <MapPin className="h-6 w-6" />
                 </div>
                 <div>
-                  <h4 className="font-medium text-lg mb-1">{contactInfo.addressLabel}</h4>
-                  <p className="text-gray-500 dark:text-gray-400">{contactInfo.address}</p>
+                  <h4 className="font-medium text-lg mb-1">
+                    {contactInfo.addressLabel}
+                  </h4>
+                  <p className="text-gray-500 dark:text-gray-400">
+                    {contactInfo.address}
+                  </p>
                 </div>
               </div>
             </div>
@@ -174,7 +188,11 @@ export function ContactSection({ contactInfo }) {
                   value={formData.name}
                   onChange={handleChange}
                 />
-                {formErrors.name && <p className="text-sm font-medium text-red-500">{formErrors.name}</p>}
+                {formErrors.name && (
+                  <p className="text-sm font-medium text-red-500">
+                    {formErrors.name}
+                  </p>
+                )}
               </div>
 
               <div className="space-y-2">
@@ -190,7 +208,11 @@ export function ContactSection({ contactInfo }) {
                   value={formData.email}
                   onChange={handleChange}
                 />
-                {formErrors.email && <p className="text-sm font-medium text-red-500">{formErrors.email}</p>}
+                {formErrors.email && (
+                  <p className="text-sm font-medium text-red-500">
+                    {formErrors.email}
+                  </p>
+                )}
               </div>
 
               <div className="space-y-2">
@@ -205,7 +227,11 @@ export function ContactSection({ contactInfo }) {
                   value={formData.phone}
                   onChange={handleChange}
                 />
-                {formErrors.phone && <p className="text-sm font-medium text-red-500">{formErrors.phone}</p>}
+                {formErrors.phone && (
+                  <p className="text-sm font-medium text-red-500">
+                    {formErrors.phone}
+                  </p>
+                )}
               </div>
 
               <div className="space-y-2">
@@ -220,16 +246,20 @@ export function ContactSection({ contactInfo }) {
                   value={formData.message}
                   onChange={handleChange}
                 />
-                {formErrors.message && <p className="text-sm font-medium text-red-500">{formErrors.message}</p>}
+                {formErrors.message && (
+                  <p className="text-sm font-medium text-red-500">
+                    {formErrors.message}
+                  </p>
+                )}
               </div>
 
               <Button
                 type="submit"
-                className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-white border-0 rounded-full h-12 text-base"
                 disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white rounded-full h-12 text-base font-medium transition-all duration-200 shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
-                  <span className="flex items-center">
+                  <span className="flex items-center justify-center">
                     <svg
                       className="animate-spin -ml-1 mr-3 h-4 w-4 text-white"
                       xmlns="http://www.w3.org/2000/svg"
@@ -264,5 +294,5 @@ export function ContactSection({ contactInfo }) {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,42 +1,42 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Calendar } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { getNavigationItems } from "@/lib/data/navigation"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { getNavigationItems } from "@/lib/data/navigation";
 
 /**
  * Composant Header du site avec design moderne
  * Inclut la navigation responsive et le toggle de thème
  */
 export function Header() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   // Récupération des items de navigation (simulation d'appel API)
-  const navItems = getNavigationItems()
+  const navItems = getNavigationItems();
 
   // Effet pour détecter le scroll et changer l'apparence du header
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10)
-    }
+      setScrolled(window.scrollY > 10);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // bloque le scroll sur mobile lorsque le menu est ouvert
   useEffect(() => {
     if (isOpen) {
-      document.body.classList.add("overflow-hidden")
+      document.body.classList.add("overflow-hidden");
     } else {
-      document.body.classList.remove("overflow-hidden")
+      document.body.classList.remove("overflow-hidden");
     }
-  }, [isOpen])
+  }, [isOpen]);
 
   return (
     <header
@@ -52,7 +52,11 @@ export function Header() {
         {/* Navigation Desktop */}
         <nav className="hidden md:flex items-center space-x-6 text-white">
           {navItems.map((item) => (
-            <Link key={item.id} href={item.href} className="text-sm font-medium hover:text-primary transition-colors">
+            <Link
+              key={item.id}
+              href={item.href}
+              className="text-sm font-medium hover:text-primary transition-colors"
+            >
               {item.label}
             </Link>
           ))}
@@ -61,13 +65,16 @@ export function Header() {
             <Link href="#start">Commencer aujourd'hui</Link>
           </Button> */}
 
-          <Button variant="outline" className="bg-black border-2 rounded-full flex items-center gap-2" asChild>
+          <Button
+            variant="outline"
+            className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white border-0 rounded-full px-4 h-10 text-sm font-medium flex items-center gap-2 shadow-md transition-all duration-200"
+            asChild
+          >
             <Link href="#booking">
               <Calendar className="h-4 w-4" />
               <span>Réserver un appel</span>
             </Link>
           </Button>
-
           <ThemeToggle />
         </nav>
 
@@ -77,7 +84,12 @@ export function Header() {
             <Link href="#start">Commencer aujourd'hui</Link>
           </Button> */}
           <ThemeToggle />
-          <Button variant="ghost" className="text-white" size="icon" onClick={() => setIsOpen(true)}>
+          <Button
+            variant="ghost"
+            className="text-white"
+            size="icon"
+            onClick={() => setIsOpen(true)}
+          >
             <Menu className="h-6 w-6" />
           </Button>
         </div>
@@ -95,7 +107,11 @@ export function Header() {
           >
             <div className="flex flex-col h-full p-6">
               <div className="flex justify-end">
-                <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setIsOpen(false)}
+                >
                   <X className="h-6 w-6" />
                 </Button>
               </div>
@@ -110,7 +126,10 @@ export function Header() {
                     {item.label}
                   </Link>
                 ))}
-                <Button className="mt-4 w-full bg-black hover:bg-black/90 text-white rounded-full" asChild>
+                <Button
+                  className="mt-4 w-full bg-black hover:bg-black/90 text-white rounded-full"
+                  asChild
+                >
                   <Link href="#start" onClick={() => setIsOpen(false)}>
                     Commencer aujourd'hui
                   </Link>
@@ -132,5 +151,5 @@ export function Header() {
         )}
       </AnimatePresence>
     </header>
-  )
+  );
 }

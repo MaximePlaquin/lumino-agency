@@ -10,7 +10,7 @@ export function BookingSection() {
   const [showCalendly, setShowCalendly] = useState(false)
 
   return (
-    <section id="booking" className="py-24 px-4 md:px-0">
+    <section id="booking" className="py-20">
   <div className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-12">
     
     {/* Texte à gauche */}
