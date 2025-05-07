@@ -31,7 +31,7 @@ export function AboutSection({ content }) {
   ];
 
   return (
-    <section id="about" className="py-24 bg-muted/30">
+    <section id="about" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         {/* En-tête de section */}
         <div className="text-center mb-20">
@@ -145,7 +145,7 @@ export function AboutSection({ content }) {
         </div>
 
         {/* Section équipe */}
-        {content.showTeam && (
+        {/* {content.showTeam && (
           <div className="mt-32">
             <div className="text-center mb-16">
               <motion.h3
@@ -204,7 +204,7 @@ export function AboutSection({ content }) {
               ))}
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </section>
   );

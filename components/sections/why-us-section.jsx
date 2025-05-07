@@ -20,9 +20,9 @@ export function WhyUsSection({ content }) {
   return (
     <section id="why-us" className="py-20">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <motion.h2
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-sm uppercase tracking-widest text-muted-foreground mb-3"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -30,7 +30,7 @@ export function WhyUsSection({ content }) {
           >
             {content.title}
           </motion.h2>
-          <motion.p
+          {/* <motion.p
             className="text-lg text-muted-foreground max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -38,7 +38,26 @@ export function WhyUsSection({ content }) {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             {content.subtitle}
-          </motion.p>
+          </motion.p> */}
+
+          <motion.h2
+            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 max-w-4xl mx-auto leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <span></span>
+            <span className="relative">
+              Lumino agency :
+              <span className="font-normal italic text-primary">
+                {" "}
+                votre partenaire digital idéal
+              </span>
+            </span>
+          </motion.h2>
+
+
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
