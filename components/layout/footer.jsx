@@ -12,19 +12,19 @@ export function Footer() {
   const socialLinks = getSocialLinks()
 
   return (
-    <footer className="bg-[#f9f9f9] dark:bg-gray-950 py-16 border-t border-gray-200 dark:border-gray-800">
+    <footer className="bg-[#f9f9f9] py-16 border-t border-gray-200">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
             <h3 className="font-bold text-2xl mb-6">{footerContent.companyName}</h3>
-            <p className="text-gray-500 dark:text-gray-400 mb-6">{footerContent.description}</p>
+            <p className="text-gray-500 mb-6">{footerContent.description}</p>
             <div className="flex space-x-5">
               {socialLinks.map((social) => (
                 <Link
                   key={social.id}
                   href={social.url}
                   aria-label={social.name}
-                  className="text-gray-500 dark:text-gray-400 hover:text-primary transition-colors"
+                  className="text-gray-500 hover:text-primary transition-colors"
                 >
                   <social.icon className="h-5 w-5" />
                 </Link>
@@ -40,7 +40,7 @@ export function Footer() {
                   <li key={link.id}>
                     <Link
                       href={link.url}
-                      className="text-gray-500 dark:text-gray-400 hover:text-primary transition-colors"
+                      className="text-gray-500 hover:text-primary transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -51,11 +51,11 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="border-t border-gray-200 dark:border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+        <div className="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-sm text-gray-500">
             &copy; {new Date().getFullYear()} {footerContent.companyName}. {footerContent.copyright}
           </p>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-4 md:mt-0">{footerContent.tagline}</p>
+          <p className="text-sm text-gray-500 mt-4 md:mt-0">{footerContent.tagline}</p>
         </div>
       </div>
     </footer>

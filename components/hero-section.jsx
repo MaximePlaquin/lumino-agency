@@ -42,7 +42,7 @@ export function HeroSection() {
             initial="hidden"
             animate="visible"
           >
-            <motion.span className="block text-primary dark:text-primary" variants={wordVariants}>
+            <motion.span className="block text-primary" variants={wordVariants}>
               Transformez
             </motion.span>
             <motion.span className="block" variants={wordVariants}>

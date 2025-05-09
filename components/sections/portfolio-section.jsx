@@ -22,11 +22,11 @@ export function PortfolioSection({ projects }) {
     filter === "all" ? projects.items : projects.items.filter((project) => project.category === filter)
 
   return (
-    <section id="portfolio" className="py-24 bg-[#f9f9f9] dark:bg-gray-950">
+    <section id="portfolio" className="py-24 bg-[#f9f9f9]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
           <motion.p
-            className="text-sm uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-3"
+            className="text-sm uppercase tracking-widest text-gray-500 mb-3"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -46,7 +46,7 @@ export function PortfolioSection({ projects }) {
           </motion.h2>
 
           <motion.p
-            className="text-xl text-gray-500 dark:text-gray-400 max-w-3xl mx-auto mb-12"
+            className="text-xl text-gray-500 max-w-3xl mx-auto mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

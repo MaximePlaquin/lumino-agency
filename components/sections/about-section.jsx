@@ -82,7 +82,7 @@ export function AboutSection({ content }) {
               key={value.id}
               className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-800 to-slate-900 p-6 shadow-xl transition hover:ring-2 hover:ring-purple-500/50"
             >
-              <div className="absolute -inset-20 bg-purple-50 dark:bg-purple-950/30 blur-2xl" />
+              <div className="absolute -inset-20 bg-purple-50 blur-2xl" />
               <div className="relative z-10">
                 {features[index]?.icon}
                 <h3 className="mt-4 text-xl font-bold text-black">{value.title}</h3>

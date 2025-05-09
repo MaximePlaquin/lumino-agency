@@ -44,7 +44,7 @@ export function ServicesSection({ services }) {
     <section id="services" className="py-10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <motion.h2
+          {/* <motion.h2
             className="text-3xl md:text-4xl font-bold mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +52,26 @@ export function ServicesSection({ services }) {
             transition={{ duration: 0.5 }}
           >
             {services.title}
+          </motion.h2> */}
+
+          <motion.h2
+            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 max-w-4xl mx-auto leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <span></span>
+            <span className="relative">
+              Explorer
+              <span className="font-normal italic text-primary">
+                {" "}
+                nos services numérique
+              </span>
+            </span>
           </motion.h2>
+
+
           <motion.p
             className="text-lg text-muted-foreground max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}

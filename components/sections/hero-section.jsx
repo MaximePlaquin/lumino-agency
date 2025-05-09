@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 export function HeroSection({ content }) {
   const {
@@ -15,20 +16,26 @@ export function HeroSection({ content }) {
     secondaryButton = { label: "Nous contacter", url: "#contact" },
     scrollText = "Explorer",
     technologies = ["React", "Next.js", "Tailwind", "WordPress", "Google Ads"],
-  } = content || {}
+  } = content || {};
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <section className="relative w-full min-h-screen overflow-hidden bg-slate-950 text-white flex items-center justify-center pt-20">
+      {/* Couche de superposition lorsque le menu mobile est ouvert */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-[999] bg-black/50 backdrop-blur-sm md:hidden" />
+      )}
+
       {/* Effet de lumière violet centrée */}
       <div className="absolute top-[20%] inset-x-0 flex justify-center pointer-events-none z-0">
-  <motion.div
-    initial={{ opacity: 0.5, width: "15rem" }}
-    animate={{ opacity: 1, width: "48rem" }}
-    transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
-    className="w-full max-w-[48rem] h-[200px] bg-purple-400/30 blur-3xl opacity-30 rounded-full"
-  />
-</div>
-
+        <motion.div
+          initial={{ opacity: 0.5, width: "15rem" }}
+          animate={{ opacity: 1, width: "48rem" }}
+          transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
+          className="w-full max-w-[48rem] h-[200px] bg-purple-400/30 blur-3xl opacity-30 rounded-full"
+        />
+      </div>
 
       {/* Contenu principal */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10">
@@ -49,8 +56,12 @@ export function HeroSection({ content }) {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <span>{titleLine1} </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">{titleLine2} </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-300">{titleLine3}</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
+              {titleLine2}{" "}
+            </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-300">
+              {titleLine3}
+            </span>
           </motion.h1>
 
           <motion.p
@@ -68,13 +79,22 @@ export function HeroSection({ content }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.5 }}
           >
-            <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white rounded-full px-6 h-12 text-base sm:text-lg" asChild>
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white rounded-full px-6 h-12 text-base sm:text-lg"
+              asChild
+            >
               <Link href={primaryButton.url}>
                 <span>{primaryButton.label}</span>
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-2 border-gray-600 text-black rounded-full px-6 h-12 text-base sm:text-lg hover:bg-white/10" asChild>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-2 border-gray-600 text-white rounded-full px-6 h-12 text-base sm:text-lg hover:bg-white/10 hover:text-white"
+              asChild
+            >
               <Link href={secondaryButton.url}>{secondaryButton.label}</Link>
             </Button>
           </motion.div>
