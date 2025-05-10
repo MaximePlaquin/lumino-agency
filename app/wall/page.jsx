@@ -2,19 +2,19 @@ import Image from "next/image"
 
 const images = [
   {
-    src: "/wall/marrakech1.jpg",
+    src: "/wall/marrakech1.jpeg",
     alt: "Ruelle de la médina de Marrakech",
   },
   {
-    src: "/wall/marrakech2.jpg",
+    src: "/wall/marrakech2.jpeg",
     alt: "Coucher de soleil sur les toits",
   },
   {
-    src: "/wall/marrakech3.jpg",
+    src: "/wall/marrakech3.jpeg",
     alt: "Travail sur le terrain avec le drone",
   },
   {
-    src: "/wall/marrakech4.jpg",
+    src: "/wall/marrakech4.jpeg",
     alt: "Souk coloré de Marrakech",
   },
   {

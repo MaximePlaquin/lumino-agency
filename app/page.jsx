@@ -14,6 +14,7 @@ import { getTestimonials } from "@/lib/data/testimonials"
 import { getContactInfo } from "@/lib/data/contact"
 // import { getServicesContent } from "@/lib/data/services"
 import { getServices } from "@/lib/data/services"
+import { WallPreview } from "@/components/HomePageSectionWall"
 
 /**
  * Page d'accueil du site Scalenity
@@ -34,6 +35,7 @@ export default async function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between overflow-x-hidden">
       <HeroSection content={heroContent} />
       <ServicesSection services={services} />
+      <WallPreview />
       <AboutSection content={aboutContent} />
       <WhyUsSection content={whyUsContent} />
       {/* <PortfolioSection projects={portfolioProjects} /> */}
