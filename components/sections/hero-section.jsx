@@ -46,7 +46,8 @@ export function HeroSection({ content }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            {tagline}
+             <span className="block">AGENCE WEB & DIGITALE</span>
+             <span className="block mt-3">PARIS-MARRAKECH</span>
           </motion.p>
 
           <motion.h1
@@ -92,7 +93,7 @@ export function HeroSection({ content }) {
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-gray-600 text-white rounded-full px-6 h-12 text-base sm:text-lg hover:bg-white/10 hover:text-white"
+              className="border-2 border-gray-600 text-black rounded-full px-6 h-12 text-base sm:text-lg hover:bg-white/10 hover:text-white"
               asChild
             >
               <Link href={secondaryButton.url}>{secondaryButton.label}</Link>

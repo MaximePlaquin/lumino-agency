@@ -93,7 +93,7 @@ export function BookingSection() {
         </button>
         <div className="w-full h-full p-4 pt-12">
           <iframe
-            src="https://calendly.com/votre-lien-calendly"
+            src="https://calendly.com/sitewoocommerce2023/30min"
             width="100%"
             height="100%"
             frameBorder="0"
