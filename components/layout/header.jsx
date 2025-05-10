@@ -5,17 +5,16 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { getNavigationItems } from '@/lib/data/navigation'
-import { usePathname } from 'next/navigation'
-
+import { getNavigationItems } from "@/lib/data/navigation";
+import { usePathname } from "next/navigation";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const pathname = usePathname();
-  const isBlogPage = pathname.startsWith('/blog');
-
+  const isBlogPage = pathname.startsWith("/blog");
+  const isWallPage = pathname.startsWith("/wall");
 
   const navItems = getNavigationItems();
 
@@ -38,13 +37,15 @@ export function Header() {
 
   return (
     <>
-
-        <header
-  className={`fixed top-0 w-full z-50 transition-all duration-300
-    ${scrolled || isBlogPage ? "bg-black/35 backdrop-blur-md shadow-md" : "bg-transparent"}
+      <header
+        className={`fixed top-0 w-full z-50 transition-all duration-300
+    ${
+      scrolled || isBlogPage || isWallPage
+        ? "bg-black/35 backdrop-blur-md shadow-md"
+        : "bg-transparent"
+    }
   `}
->
-
+      >
         <div className="container mx-auto px-4 py-5 flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
             <span className="font-bold text-2xl text-white">Lumino Agency</span>
@@ -123,7 +124,9 @@ export function Header() {
 
               {/* Contenu parfaitement aligné */}
               <div className="flex-1 flex flex-col items-center justify-center pb-4">
-                <nav className="w-full px-4 space-y-4"> {/* Espacement réduit */}
+                <nav className="w-full px-4 space-y-4">
+                  {" "}
+                  {/* Espacement réduit */}
                   {navItems.map((item) => (
                     <motion.div
                       key={item.id}
@@ -139,7 +142,6 @@ export function Header() {
                       </Link>
                     </motion.div>
                   ))}
-
                   <div className="pt-2 w-full max-w-xs mx-auto">
                     <Button
                       variant="outline"

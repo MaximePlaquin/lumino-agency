@@ -114,7 +114,7 @@ export function ServicesSection({ services }) {
                     {service.features.map((feature, index) => (
                       <span
                         key={index}
-                        className="px-3 py-1 bg-background/80 text-sm rounded-full"
+                        className="px-3 py-1 bg-background/80 text-black text-sm rounded-full"
                       >
                         {feature.text}
                       </span>
@@ -123,7 +123,7 @@ export function ServicesSection({ services }) {
 
                   <Link
                     href={service.buttonUrl}
-                    className="text-primary font-medium hover:underline inline-flex items-center"
+                    className="text-blue-600 dark:text-sky-400 font-medium hover:underline inline-flex items-center"
                   >
                     {service.buttonText}
                     <svg
