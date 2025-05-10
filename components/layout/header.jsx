@@ -6,10 +6,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getNavigationItems } from '@/lib/data/navigation'
+import { usePathname } from 'next/navigation'
+
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const pathname = usePathname();
+  const isBlogPage = pathname.startsWith('/blog');
+
 
   const navItems = getNavigationItems();
 
@@ -32,11 +38,13 @@ export function Header() {
 
   return (
     <>
-      <header
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled ? "bg-black/35 backdrop-blur-md shadow-md" : "bg-transparent"
-        }`}
-      >
+
+        <header
+  className={`fixed top-0 w-full z-50 transition-all duration-300
+    ${scrolled || isBlogPage ? "bg-black/35 backdrop-blur-md shadow-md" : "bg-transparent"}
+  `}
+>
+
         <div className="container mx-auto px-4 py-5 flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
             <span className="font-bold text-2xl text-white">Lumino Agency</span>
