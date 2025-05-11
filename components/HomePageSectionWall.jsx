@@ -8,7 +8,13 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const imageFilenames = ["marrakech1.jpeg", "marrakech2.jpeg", "marrakech3.jpeg", "marrakech4.jpeg"];
+const imageFilenames = [
+  "marrakech1.webp",
+  "marrakech2.webp",
+  "marrakech3.webp",
+  "marrakech4.webp",
+  "marrakech5.webp",
+];
 
 export function WallPreview() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -22,22 +28,47 @@ export function WallPreview() {
   };
 
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="py-10">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 flex items-center justify-center gap-2">
-          📸 Quelques instants capturés
-        </h2>
-
+        <div className="text-center mb-16">
+        <motion.h2
+  className="text-5xl md:text-6xl font-bold mb-6 leading-snug mx-auto px-4 text-center break-words text-balance w-full max-w-3xl"
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.5, delay: 0.1 }}
+>
+  <span className="block text-5xl">📸</span>
+  <span className="block sm:inline">Quelques</span>{" "}
+  <span className="block sm:inline font-normal italic text-primary">
+    instants capturés
+  </span>
+</motion.h2>
+          <motion.p
+            className="text-lg text-muted-foreground max-w-2xl mx-auto mb-5"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Découvrez notre "Wall" pour vous faire voyager et apprendre à nous
+            connaître
+          </motion.p>
+        </div>
         <div className="relative">
-          <div
+          <motion.div
             id="wall-scroll"
-            className="flex overflow-x-auto space-x-6 pb-4 scroll-smooth scrollbar-hide"
+            className="flex overflow-x-auto space-x-6 pb-4 scroll-smooth scrollbar-hide px-2 md:px-0"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             {imageFilenames.map((file, index) => (
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.02 }}
-                className="min-w-[300px] max-w-[300px] h-[380px] rounded-3xl overflow-hidden shadow-lg cursor-pointer"
+                className="min-w-[70vw] sm:min-w-[300px] sm:max-w-[300px] h-[300px] sm:h-[380px] rounded-3xl overflow-hidden shadow-lg cursor-pointer"
                 onClick={() => setSelectedImage(`/wall/${file}`)}
               >
                 <Image
@@ -49,7 +80,7 @@ export function WallPreview() {
                 />
               </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Scroll Buttons */}
           <div className="hidden md:flex absolute top-1/2 -translate-y-1/2 w-full justify-between px-4">
@@ -81,12 +112,21 @@ export function WallPreview() {
         <Dialog
           open={!!selectedImage}
           onClose={() => setSelectedImage(null)}
-          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center"
+          className="fixed inset-0 z-50 flex items-center justify-center"
         >
-          <div className="relative p-4 max-w-4xl w-full">
+          <div
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40"
+            onClick={() => setSelectedImage(null)}
+          ></div>
+
+          <div
+            className="relative z-50 max-w-5xl w-full px-4"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute top-2 right-2 z-10 bg-white text-black p-2 rounded-full"
+              className="absolute top-4 right-4 z-50 bg-white text-black p-2 rounded-full hover:bg-gray-100"
+              aria-label="Fermer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -96,7 +136,7 @@ export function WallPreview() {
                 alt="Aperçu"
                 width={1200}
                 height={800}
-                className="w-full h-auto rounded-xl"
+                className="w-full h-auto max-h-[80vh] object-contain rounded-xl"
               />
             )}
           </div>

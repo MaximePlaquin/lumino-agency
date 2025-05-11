@@ -2,29 +2,58 @@ import Image from "next/image"
 
 const images = [
   {
-    src: "/wall/marrakech1.jpeg",
+    src: "/wall/marrakech1.webp",
     alt: "Ruelle de la médina de Marrakech",
   },
   {
-    src: "/wall/marrakech2.jpeg",
+    src: "/wall/marrakech2.webp",
     alt: "Coucher de soleil sur les toits",
   },
   {
-    src: "/wall/marrakech3.jpeg",
+    src: "/wall/marrakech3.webp",
     alt: "Travail sur le terrain avec le drone",
   },
   {
-    src: "/wall/marrakech4.jpeg",
+    src: "/wall/marrakech4.webp",
     alt: "Souk coloré de Marrakech",
   },
   {
-    src: "/wall/studio1.jpg",
+    src: "/wall/marrakech5.webp",
     alt: "Session de design dans notre studio",
   },
   {
-    src: "/wall/details.jpg",
+    src: "/wall/marrakech7.webp",
     alt: "Détails de notre travail au quotidien",
   },
+  {
+    src: "/wall/marrakech8.webp",
+    alt: "Détails de notre travail au quotidien",
+  },
+  {
+    src: "/wall/marrakech9.webp",
+    alt: "Détails de notre travail au quotidien",
+  },
+  {
+    src: "/wall/marrakech10.webp",
+    alt: "Détails de notre travail au quotidien",
+  },
+  {
+    src: "/wall/marrakech11.webp",
+    alt: "Détails de notre travail au quotidien",
+  },
+  {
+    src: "/wall/marrakech12.webp",
+    alt: "Détails de notre travail au quotidien",
+  },
+  {
+    src: "/wall/marrakech14.webp",
+    alt: "Détails de notre travail au quotidien",
+  },
+  {
+    src: "/wall/marrakech15.webp",
+    alt: "Détails de notre travail au quotidien",
+  },
+
 ]
 
 export default function WallSection() {
