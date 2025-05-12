@@ -10,11 +10,11 @@ export function Footer() {
         
         {/* Mentions légales */}
         <div className="flex flex-wrap items-center gap-4">
-          <Link href="/mentions-legales" className="hover:text-primary transition-colors">
+          <Link href="/mention-legal" className="hover:text-primary transition-colors">
             Mentions légales
           </Link>
           <span className="text-gray-300">|</span>
-          <Link href="/politique-confidentialite" className="hover:text-primary transition-colors">
+          <Link href="/confidentialite" className="hover:text-primary transition-colors">
             Politique de confidentialité
           </Link>
         </div>

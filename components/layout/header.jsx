@@ -15,6 +15,8 @@ export function Header() {
   const pathname = usePathname();
   const isBlogPage = pathname.startsWith("/blog");
   const isWallPage = pathname.startsWith("/wall");
+  const isLegalPage = pathname.startsWith("/mention");
+  const isConfidentialite = pathname.startsWith("/confidentialite");
 
   const navItems = getNavigationItems();
 
@@ -40,7 +42,7 @@ export function Header() {
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-300
     ${
-      scrolled || isBlogPage || isWallPage
+      scrolled || isBlogPage || isWallPage || isLegalPage || isConfidentialite
         ? "bg-black/35 backdrop-blur-md shadow-md"
         : "bg-transparent"
     }
