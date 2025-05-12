@@ -39,7 +39,7 @@ export function generateMetadata() {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr" suppressHydrationWarning>
+    <html lang="fr" className="light" suppressHydrationWarning>
       <body className={`${inter.className} overflow-x-hidden scroll-smooth`}>
         <>
           <Header />
