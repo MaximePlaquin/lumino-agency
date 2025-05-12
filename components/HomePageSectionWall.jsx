@@ -29,23 +29,24 @@ export function WallPreview() {
 
   return (
     <section className="py-10">
-      <div className="container mx-auto px-4 text-center">
-        <div className="text-center mb-16">
-        <motion.h2
-  className="text-5xl md:text-6xl font-bold mb-6 leading-snug mx-auto px-4 text-center break-words text-balance w-full max-w-3xl"
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.5, delay: 0.1 }}
->
-  <span className="block text-5xl">📸</span>
-  <span className="block sm:inline">Quelques</span>{" "}
-  <span className="block sm:inline font-normal italic text-primary">
-    instants capturés
-  </span>
-</motion.h2>
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-4 text-center">
+        <div className="container mb-6">
+          <motion.h2
+            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 max-w-4xl mx-auto leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <span className="block text-4xl sm:text-5xl">📸</span>
+            <span className="block sm:inline">Quelques</span>{" "}
+            <span className="block sm:inline font-normal italic text-primary">
+              instants capturés
+            </span>
+          </motion.h2>
+
           <motion.p
-            className="text-lg text-muted-foreground max-w-2xl mx-auto mb-5"
+            className="text-lg text-muted-foreground mx-auto mb-5 text-center w-full max-w-2xl px-6 sm:px-4 break-words whitespace-normal"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -59,6 +60,7 @@ export function WallPreview() {
           <motion.div
             id="wall-scroll"
             className="flex overflow-x-auto space-x-6 pb-4 scroll-smooth scrollbar-hide px-2 md:px-0"
+            style={{ overflowX: "auto", maxWidth: "100vw" }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

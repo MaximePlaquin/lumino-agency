@@ -17,32 +17,49 @@ export default function BlogPage() {
       </h1>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {posts.map((post) => (
-  <Link key={post.slug} href={`/blog/${post.slug}`} className="group block">
-    <Card className="hover:shadow-xl transition-all duration-200 group-hover:scale-[1.02] cursor-pointer overflow-hidden">
-      <img
-        src={post.thumbnail || "/default-thumbnail.jpg"}
-        alt={post.title}
-        className="w-full h-48 object-cover"
-      />
-      <CardContent className="p-4 space-y-3">
-        <Badge variant="outline" className="text-xs w-fit border-primary text-primary bg-primary/10">
-          {post.category}
-        </Badge>
-        <h3 className="text-lg font-semibold text-gray-900">{post.title}</h3>
-        <p className="text-sm text-muted-foreground">{post.date}</p>
-        <p className="text-sm text-gray-600">{post.excerpt}</p>
+        {posts.map((post) => (
+          <Link
+            key={post.slug}
+            href={`/blog/${post.slug}`}
+            className="group block"
+          >
+            <Card className="hover:shadow-xl transition-all duration-200 group-hover:scale-[1.02] cursor-pointer overflow-hidden">
+              <img
+                src={post.thumbnail || "/default-thumbnail.jpg"}
+                alt={post.title}
+                className="w-full h-48 object-cover"
+              />
+              <CardContent className="p-4 space-y-3">
+                <div className="flex flex-wrap gap-2">
+                  {(Array.isArray(post.category)
+                    ? post.category
+                    : [post.category]
+                  ).map((cat, index) => (
+                    <Badge
+                      key={index}
+                      variant="outline"
+                      className="text-xs w-fit border-primary text-primary bg-primary/10"
+                    >
+                      {cat}
+                    </Badge>
+                  ))}
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  {post.title}
+                </h3>
+                <p className="text-sm text-muted-foreground">{post.date}</p>
+                <p className="text-sm text-gray-600">{post.excerpt}</p>
 
-        {/* Bouton transformé en Link stylisé */}
-        <div className="pt-2">
-          <span className="inline-block bg-gradient-to-r from-cyan-500 to-purple-500 text-white text-sm font-medium px-4 py-2 rounded-full">
-            Lire l'article 📖
-          </span>
-        </div>
-      </CardContent>
-    </Card>
-  </Link>
-))}
+                {/* Bouton transformé en Link stylisé */}
+                <div className="pt-2">
+                  <span className="inline-block bg-gradient-to-r from-cyan-500 to-purple-500 text-white text-sm font-medium px-4 py-2 rounded-full">
+                    Lire l'article 📖
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+        ))}
       </div>
     </section>
   );

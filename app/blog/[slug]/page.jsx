@@ -1,5 +1,8 @@
 import { getAllPosts, getPostBySlug } from '@/lib/blog';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Badge } from '@/components/ui/badge';
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -8,12 +11,49 @@ export async function generateStaticParams() {
 
 export default function PostPage({ params }) {
   const post = getPostBySlug(params.slug);
+  const { title, date, thumbnail, category } = post.frontmatter;
 
   return (
-    <article className="max-w-3xl mx-auto py-20 px-4">
-      <h1 className="text-4xl font-bold mb-4">{post.frontmatter.title}</h1>
-      <p className="text-sm text-gray-500 mb-10">{post.frontmatter.date}</p>
-      <MDXRemote source={post.content} />
+    <article className="max-w-7xl w-full mx-auto px-4 md:px-6 lg:px-8 py-20">
+      <div className="my-8 text-center">
+        {Array.isArray(category) && category.length > 0 && (
+          <div className="flex flex-wrap justify-center gap-2 mb-4">
+            {category.map((tag, idx) => (
+              <Badge key={idx} variant="outline">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        )}
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+          {title}
+        </h1>
+        <p className="text-sm text-muted-foreground">{date}</p>
+      </div>
+
+      {thumbnail && (
+        <div className="mb-10 rounded-xl overflow-hidden">
+          <Image
+            src={thumbnail}
+            alt={title}
+            width={1200}
+            height={600}
+            className="w-full h-auto object-cover rounded-xl shadow"
+          />
+        </div>
+      )}
+
+      <div className="prose prose-lg prose-neutral dark:prose-invert max-w-none mx-auto">
+        <MDXRemote source={post.content} />
+      </div>
+
+      <div className="mt-16 text-center">
+        <Link href="/contact">
+          <span className="inline-block bg-gradient-to-r from-cyan-500 to-purple-500 text-white text-sm font-medium px-6 py-3 rounded-full shadow-md hover:scale-105 transition-transform">
+            Contactez-nous 📬
+          </span>
+        </Link>
+      </div>
     </article>
   );
 }
