@@ -1,8 +1,13 @@
-import { getAllPosts, getPostBySlug } from '@/lib/blog';
-import { MDXRemote } from 'next-mdx-remote/rsc';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
+import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import Image from "next/image";
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import MDXImage from "@/components/MDXImage";
+
+const components = {
+  img: (props) => <MDXImage {...props} />,
+};
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -32,23 +37,23 @@ export default function PostPage({ params }) {
       </div>
 
       {thumbnail && (
-        <div className="mb-10 rounded-xl overflow-hidden">
+        <div className="mb-10 flex justify-center">
           <Image
             src={thumbnail}
             alt={title}
-            width={1200}
-            height={600}
-            className="w-full h-auto object-cover rounded-xl shadow"
+            width={1000}
+            height={500}
+            className="w-full max-w-4xl h-auto object-cover rounded-xl shadow"
           />
         </div>
       )}
 
       <div className="prose prose-lg prose-neutral dark:prose-invert max-w-none mx-auto">
-        <MDXRemote source={post.content} />
+        <MDXRemote source={post.content} components={components} />
       </div>
 
       <div className="mt-16 text-center">
-        <Link href="/contact">
+        <Link href="/#contact">
           <span className="inline-block bg-gradient-to-r from-cyan-500 to-purple-500 text-white text-sm font-medium px-6 py-3 rounded-full shadow-md hover:scale-105 transition-transform">
             Contactez-nous 📬
           </span>

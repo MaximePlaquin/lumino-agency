@@ -15,6 +15,8 @@ import { getContactInfo } from "@/lib/data/contact"
 // import { getServicesContent } from "@/lib/data/services"
 import { getServices } from "@/lib/data/services"
 import { WallPreview } from "@/components/HomePageSectionWall"
+import ScrollToHash from '@/ScrollToHash';
+
 
 /**
  * Page d'accueil du site Scalenity
@@ -33,6 +35,7 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between overflow-x-hidden">
+      <ScrollToHash />
       <HeroSection content={heroContent} />
       <ServicesSection services={services} />
       <WallPreview />
