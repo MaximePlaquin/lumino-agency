@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/footer"
 import { Analytics } from "@/components/analytics"
 import { getSiteMetadata } from "@/lib/data/metadata"
 import { Suspense } from "react"
+import { Toaster } from 'sonner';
 
 // Police principale
 const inter = Inter({
@@ -42,6 +43,7 @@ export default function RootLayout({ children }) {
         <>
           <Header />
           <Suspense fallback={<div>Chargement...</div>}>{children}</Suspense>
+          <Toaster richColors position="top-center" />
           <Footer />
           <Analytics />
         </>
