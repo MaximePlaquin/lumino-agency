@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Link from "next/link"
-import { Globe, Palette, Zap, BarChart3, Wrench } from "lucide-react"
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Globe, Palette, Zap, BarChart3, Wrench } from "lucide-react";
 
 /**
  * Section Services du site avec design moderne de cartes
@@ -10,7 +10,6 @@ import { Globe, Palette, Zap, BarChart3, Wrench } from "lucide-react"
  * @param {Object} props.services - Les données des services
  */
 export function ServicesSection({ services }) {
-  
   const icons = {
     globe: Globe,
     palette: Palette,
@@ -27,7 +26,7 @@ export function ServicesSection({ services }) {
         staggerChildren: 0.2,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { y: 30, opacity: 0 },
@@ -38,7 +37,7 @@ export function ServicesSection({ services }) {
         duration: 0.5,
       },
     },
-  }
+  };
 
   return (
     <section id="services" className="py-10">
@@ -71,7 +70,6 @@ export function ServicesSection({ services }) {
             </span>
           </motion.h2>
 
-
           <motion.p
             className="text-lg text-muted-foreground max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
@@ -91,30 +89,34 @@ export function ServicesSection({ services }) {
           viewport={{ once: true }}
         >
           {services.items.map((service) => {
-            const Icon = icons[service.iconId]
+            const Icon = icons[service.iconId];
 
             return (
               <motion.div
                 key={service.id}
                 variants={itemVariants}
-                className={`rounded-2xl p-8 h-full flex flex-col ${service.bgClass}`}
+                className={`rounded-2xl p-8 h-full flex flex-col shadow-md hover:shadow-xl transition-shadow duration-300 ${service.bgClass}`}
               >
                 <div
                   className={`w-12 h-12 rounded-full flex items-center justify-center ${service.iconBgClass} mb-6`}
                 >
-                  {Icon && <Icon className={`h-6 w-6 ${service.iconColorClass}`} />}
+                  {Icon && (
+                    <Icon className={`h-6 w-6 ${service.iconColorClass}`} />
+                  )}
                 </div>
 
                 <h3 className="text-2xl font-bold mb-6">{service.title}</h3>
 
-                <p className="text-muted-foreground mb-8">{service.description}</p>
+                <p className="text-muted-foreground mb-8">
+                  {service.description}
+                </p>
 
                 <div className="mt-auto">
                   <div className="flex flex-wrap gap-2 mb-4">
                     {service.features.map((feature, index) => (
                       <span
                         key={index}
-                        className="px-3 py-1 bg-background/80 text-black text-sm rounded-full"
+                        className={`px-3 py-1 text-sm rounded-full font-medium ${service.badgeClass}`}
                       >
                         {feature.text}
                       </span>
@@ -143,10 +145,10 @@ export function ServicesSection({ services }) {
                   </Link>
                 </div>
               </motion.div>
-            )
+            );
           })}
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
