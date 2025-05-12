@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useForm as useFormspree, ValidationError } from "@formspree/react"
-import { toast } from "sonner"
+import { toast } from "@/hooks/use-toast"
+
 
 export function ContactSection({ contactInfo }) {
   const [state, handleSubmit] = useFormspree("mnndvoer")
@@ -15,10 +16,16 @@ export function ContactSection({ contactInfo }) {
 
   useEffect(() => {
     if (state.succeeded) {
-      toast.success("Message envoyé !");
+      toast({
+        title: "✅ Message envoyé",
+        description: "Votre message a bien été transmis. Nous vous répondrons rapidement.",
+      });
       formRef.current?.reset();
     } else if (Array.isArray(state.errors) && state.errors.length > 0) {
-      toast.error("❌ Une erreur s’est produite. Veuillez réessayer.");
+      toast({
+        title: "❌ Une erreur s’est produite",
+        description: "Merci de vérifier vos informations ou réessayer plus tard.",
+      });
     }
   }, [state]);
   
