@@ -43,8 +43,8 @@ export function Header() {
         className={`fixed top-0 w-full z-50 transition-all duration-300
     ${
       scrolled || isBlogPage || isWallPage || isLegalPage || isConfidentialite
-        ? "bg-black/35 backdrop-blur-md shadow-md"
-        : "bg-transparent"
+        ? "bg-blue-950 text-white"
+        : "bg-blue-950 text-white"
     }
   `}
       >
