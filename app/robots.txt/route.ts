@@ -1,18 +1,14 @@
-// app/robots.txt/route.ts
-import { NextResponse } from 'next/server'
+export const runtime = 'edge'
 
 export async function GET() {
-  const baseUrl = 'https://lumino-agency.com'
-
-  const content = `
+  const body = `
 User-agent: *
 Allow: /
 
-Sitemap: ${baseUrl}/sitemap.xml
-`
+Sitemap: https://lumino-agency.com/sitemap.xml
+  `.trim()
 
-  return new NextResponse(content, {
-    status: 200,
+  return new Response(body, {
     headers: {
       'Content-Type': 'text/plain',
     },

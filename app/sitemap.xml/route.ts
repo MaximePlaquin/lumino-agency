@@ -2,13 +2,15 @@
 import { NextResponse } from 'next/server'
 import { getAllPosts } from '@/lib/blog'
 
+export const runtime = 'nodejs' // 🔧 Nécessaire pour utiliser fs
+
 export async function GET() {
   const baseUrl = 'https://lumino-agency.com'
 
-  // Pages statiques du site
+  // Pages statiques
   const staticRoutes = ['/', '/wall', '/blog']
 
-  // Articles du blog (via getAllPosts)
+  // Articles du blog
   const blogPosts = getAllPosts()
   const blogRoutes = blogPosts.map((post) => `/blog/${post.slug}`)
 

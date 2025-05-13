@@ -14,8 +14,47 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
 }
 
+export async function generateMetadata({ params }) {
+  let post;
+  try {
+    post = getPostBySlug(params.slug);
+  } catch (e) {
+    notFound();
+  }
+
+  const { title, excerpt, keywords, thumbnail, slug } = post.frontmatter;
+
+  return {
+    title,
+    description: excerpt,
+    keywords: keywords || [],
+    authors: [{ name: "Lumino Agency" }],
+    openGraph: {
+      title,
+      description: excerpt,
+      images: thumbnail
+        ? [{ url: thumbnail, width: 1200, height: 630, alt: title }]
+        : [],
+      type: "article",
+      locale: "fr_FR",
+      url: `https://www.lumino-agency.com/blog/${slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: excerpt,
+      images: thumbnail ? [thumbnail] : [],
+    },
+    alternates: {
+      canonical: `https://www.lumino-agency.com/blog/${slug}`,
+    },
+  };
+}
+
+
 export default function PostPage({ params }) {
   const post = getPostBySlug(params.slug);
+  
   const { title, date, thumbnail, category } = post.frontmatter;
 
   return (
