@@ -43,12 +43,12 @@ export function BookingSection() {
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         {/* Bouton Tarifs */}
-        <Button
+        {/* <Button
           className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white rounded-full px-6 py-4 text-base font-medium"
           onClick={() => window.open("#pricing", "_self")}
         >
           Appel Gratuit
-        </Button>
+        </Button> */}
 
         {/* Calendly Call */}
         <div
