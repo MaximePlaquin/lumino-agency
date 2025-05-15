@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -39,22 +40,41 @@ export function Header() {
 
   return (
     <>
+      {/* HEADER */}
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-300
-    ${
-      scrolled || isBlogPage || isWallPage || isLegalPage || isConfidentialite
-        ? "bg-blue-950 text-white"
-        : "bg-blue-950 text-white"
-    }
-  `}
+        className="fixed top-0 w-full z-50 bg-blue-950 text-white"
+        style={{ height: "80px" }}
       >
-        <div className="container mx-auto px-4 py-5 flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="font-bold text-2xl text-white">Lumino Agency</span>
-          </Link>
+        {/* Conteneur principal qui s'adapte aux deux versions */}
+        <div className="w-full h-full relative">
+          {/* Logo: centré sur mobile/tablette, à gauche sur desktop */}
+          <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 lg:left-4 lg:translate-x-0">
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/logo/logo-lumino-agency.png"
+                alt="Lumino Agency agence web"
+                width={170}
+                height={40}
+                className="h-11 w-auto"
+                priority
+              />
+            </Link>
+          </div>
 
-          {/* Navigation Desktop */}
-          <nav className="hidden md:flex items-center space-x-6 text-white">
+          {/* Menu burger: visible jusqu'à 768px */}
+          <div className="absolute right-4 top-1/2 transform -translate-y-1/2 lg:hidden">
+            <Button
+              variant="ghost"
+              className="text-white p-1"
+              size="lg"
+              onClick={() => setIsOpen(true)}
+            >
+              <Menu className="h-8 w-8" />
+            </Button>
+          </div>
+
+          {/* Navigation desktop: visible seulement à partir de 768px+ */}
+          <nav className="hidden lg:flex absolute right-4 top-1/2 transform -translate-y-1/2 items-center space-x-6 text-white">
             {navItems.map((item) => (
               <Link
                 key={item.id}
@@ -76,26 +96,14 @@ export function Header() {
               </Link>
             </Button>
           </nav>
-
-          {/* Bouton Menu Mobile */}
-          <div className="flex items-center space-x-4 md:hidden">
-            <Button
-              variant="ghost"
-              className="text-white"
-              size="icon"
-              onClick={() => setIsOpen(true)}
-            >
-              <Menu className="h-6 w-6" />
-            </Button>
-          </div>
         </div>
       </header>
 
-      {/* Menu Mobile - Version optimisée sans marge blanche */}
+      {/* MENU MOBILE */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Overlay */}
+            {/* BACKDROP */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -103,16 +111,15 @@ export function Header() {
               className="fixed inset-0 z-[9998] bg-black/50"
             />
 
-            {/* Menu principal - Structure ultra-optimisée */}
+            {/* MENU PANEL */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               className="fixed inset-0 z-[9999] bg-white flex flex-col"
-              style={{ padding: 0 }} // Reset complet du padding
             >
-              {/* Bouton fermer compact */}
+              {/* CLOSE BTN */}
               <div className="absolute top-2 right-2 p-1">
                 <Button
                   variant="ghost"
@@ -124,26 +131,25 @@ export function Header() {
                 </Button>
               </div>
 
-              {/* Contenu parfaitement aligné */}
+              {/* CONTENT */}
               <div className="flex-1 flex flex-col items-center justify-center pb-4">
                 <nav className="w-full px-4 space-y-4">
-                  {" "}
-                  {/* Espacement réduit */}
                   {navItems.map((item) => (
                     <motion.div
                       key={item.id}
                       whileHover={{ scale: 1.02 }}
-                      className="w-full text-center py-2" // Padding vertical minimal
+                      className="w-full text-center py-2"
                     >
                       <Link
                         href={item.href}
                         onClick={() => setIsOpen(false)}
-                        className="text-lg font-medium text-gray-900 block" /* Supprimer tout espace inutile */
+                        className="text-lg font-medium text-gray-900 block"
                       >
                         {item.label}
                       </Link>
                     </motion.div>
                   ))}
+
                   <div className="pt-2 w-full max-w-xs mx-auto">
                     <Button
                       variant="outline"

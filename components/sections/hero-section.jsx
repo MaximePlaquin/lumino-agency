@@ -39,7 +39,7 @@ export function HeroSection({ content }) {
 
       {/* Contenu principal */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center mb-6">
           <motion.p
             className="text-sm sm:text-base md:text-lg uppercase tracking-widest text-purple-300 mb-4"
             initial={{ opacity: 0, y: 20 }}

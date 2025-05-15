@@ -34,6 +34,9 @@ export function generateMetadata() {
       locale: "fr_FR",
       type: "website",
     },
+    icons: {
+      icon: "/logo/favicon-lumino-agency.png", // <- C'est ici qu'on ajoute le favicon
+    },
   };
 }
 
