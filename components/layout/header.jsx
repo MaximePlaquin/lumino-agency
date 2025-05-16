@@ -90,7 +90,7 @@ export function Header() {
               className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white border-0 rounded-full px-4 h-10 text-sm font-medium flex items-center gap-2 shadow-md transition-all duration-200"
               asChild
             >
-              <Link href="#booking">
+              <Link href="/#booking">
                 <Calendar className="h-4 w-4" />
                 <span>Réserver un appel</span>
               </Link>

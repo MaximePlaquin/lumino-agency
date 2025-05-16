@@ -14,12 +14,12 @@ import { getTestimonials } from "@/lib/data/testimonials"
 import { getContactInfo } from "@/lib/data/contact"
 // import { getServicesContent } from "@/lib/data/services"
 import { getServices } from "@/lib/data/services"
-import { WallPreview } from "@/components/HomePageSectionWall"
+import { WallPreview } from "@/components/sections/HomePageSectionWall"
 import ScrollToHash from '@/ScrollToHash';
 
 
 /**
- * Page d'accueil du site Scalenity
+ * Page d'accueil du site Lumino Agency
  * Structure modulaire avec chaque section recevant ses données via props
  * Prêt pour une future intégration CMS (WordPress headless)
  */
