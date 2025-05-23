@@ -38,7 +38,7 @@ export default async function Home() {
       <ScrollToHash />
       <HeroSection content={heroContent} />
       <ServicesSection services={services} />
-      <WallPreview />
+      {/* <WallPreview /> */}
       <AboutSection content={aboutContent} />
       <WhyUsSection content={whyUsContent} />
       {/* <PortfolioSection projects={portfolioProjects} /> */}
